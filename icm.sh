@@ -25,6 +25,7 @@ fi
 # Check if folder exists
 if [[ ! -d $folder_to_archive ]]; then
     echo "Please use a folder that exists, yeaaah thaaanks. $folder_to_archive doesn't exist."
+    exit;
 fi
 
 # Zip folder
@@ -37,13 +38,13 @@ sleep 1.5;
 echo "Folder chosen for archiving: ${folder_to_archive}"
 read -p "Are you sure you'd like to backup this folder? (Y/n) " decision
 
-sleep 0.5;
-echo "Archiving..."
-sleep 1;
-echo "Running: aws s3 cp ${folder_to_archive} ${bucket} --store-class DEEP_ARCHIVE"
-sleep 1;
-
 # Run command
 if [[ ${decision} == "y" ]]; then
+    sleep 0.5;
+    echo "Archiving..."
+    sleep 1;
+    echo "Running: aws s3 cp ${folder_to_archive} ${bucket} --store-class DEEP_ARCHIVE"
+    sleep 1;
+
     aws s3 cp ${folder_to_archive} ${bucket} --store-class DEEP_ARCHIVE
 fi
