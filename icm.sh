@@ -17,20 +17,20 @@ if ! command -v zip; then
 fi
 
 # Check if there is a first argument
-if [ -z $folder_to_archive ]; then
+if [ -z "${folder_to_archive}" ]; then
     echo "Please pass a folder you like to archive.";
     exit;
 fi
 
 # Check if folder exists
-if [[ ! -d $folder_to_archive ]]; then
+if [[ ! -d "${folder_to_archive}" ]]; then
     echo "Please use a folder that exists, yeaaah thaaanks. $folder_to_archive doesn't exist."
     exit;
 fi
 
 # Zip folder
 zip_file_name=$(echo $folder_to_archive | sed 's/\///').zip;
-zip -r ${zip_file_name} ${folder_to_archive}
+zip -r "${zip_file_name}" "${folder_to_archive}"
 
 sleep 1.5;
 
