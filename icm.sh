@@ -43,8 +43,8 @@ if [[ ${decision} == "y" ]]; then
     sleep 0.5;
     echo "Archiving..."
     sleep 1;
-    echo "Running: aws s3 cp ${zip_file_name} ${bucket} --storage-class DEEP_ARCHIVE"
+    echo "Running: aws s3 cp ${zip_file_name} s3://${bucket} --storage-class DEEP_ARCHIVE"
     sleep 1;
 
-    aws s3 cp "${zip_file_name}" ${bucket} --storage-class DEEP_ARCHIVE
+    aws s3 cp "${zip_file_name}" s3://${bucket} --storage-class DEEP_ARCHIVE
 fi
